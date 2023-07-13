@@ -57,7 +57,7 @@ class MappedVolume : public iim::VirtualVolume
 		MappedVolume(void);
 
 		//Given the reference system, initializes all object's members using stack's directories hierarchy
-        void init() throw (iim::IOException);
+        void init();
 
 		//rotate stacks matrix around D axis (accepted values are theta=0,90,180,270)
 		void rotate(int theta);
@@ -71,11 +71,11 @@ class MappedVolume : public iim::VirtualVolume
 	public:
 		//CONSTRUCTORS-DESTRUCTOR
         // objects passed to constructors will not be deallocated by the destructor
-        MappedVolume(const char* _root_dir, MappingViews * _map, bool overwrite_mdata = false, bool save_mdata=true)  throw (iim::IOException);
+        MappedVolume(const char* _root_dir, MappingViews * _map, bool overwrite_mdata = false, bool save_mdata=true);
 
-        MappedVolume(VirtualVolume * _volume, MappingViews * _map, bool overwrite_mdata = false, bool save_mdata=true)  throw (iim::IOException);
+        MappedVolume(VirtualVolume * _volume, MappingViews * _map, bool overwrite_mdata = false, bool save_mdata=true);
 
-		virtual ~MappedVolume(void) throw (iim::IOException);
+		virtual ~MappedVolume(void);
 
 		//GET methods
         float  getVXL_1(){return VXL_1;}
@@ -93,14 +93,14 @@ class MappedVolume : public iim::VirtualVolume
 		void print( bool print_stacks = false );
 
  		// iannello returns the number of channels of images composing the volume
-        void initChannels ( ) throw (iim::IOException);
+        void initChannels ( );
 
        //loads given subvolume in a 1-D array of iim::real32 while releasing stacks slices memory when they are no longer needed
-        iim::real32 *loadSubvolume_to_real32(int V0=-1,int V1=-1, int H0=-1, int H1=-1, int D0=-1, int D1=-1)  throw (iim::IOException);
+        iim::real32 *loadSubvolume_to_real32(int V0=-1,int V1=-1, int H0=-1, int H1=-1, int D0=-1, int D1=-1);
 
         //loads given subvolume in a 1-D array of iim::uint8 while releasing stacks slices memory when they are no longer needed
         iim::uint8 *loadSubvolume_to_UINT8(int V0=-1,int V1=-1, int H0=-1, int H1=-1, int D0=-1, int D1=-1,
-                                                   int *channels=0, int ret_type=iim::DEF_IMG_DEPTH) throw (iim::IOException, iom::exception);
+                                                   int *channels=0, int ret_type=iim::DEF_IMG_DEPTH);
 
 		//releases allocated memory of stacks
 		void releaseStacks(int first_file=-1, int last_file=-1);

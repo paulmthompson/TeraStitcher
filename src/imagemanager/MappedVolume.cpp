@@ -62,7 +62,7 @@ MappedVolume::MappedVolume(void) : VirtualVolume()
     map    = 0;
 }
 
-MappedVolume::MappedVolume(const char* _root_dir, MappingViews * _map, bool overwrite_mdata, bool save_mdata)  throw (IOException)
+MappedVolume::MappedVolume(const char* _root_dir, MappingViews * _map, bool overwrite_mdata, bool save_mdata)
 : VirtualVolume(_root_dir) // iannello ADDED
 {
     /**/iim::debug(iim::LEV3, strprintf("_root_dir=%s",_root_dir).c_str(), __iim__current__function__);
@@ -77,7 +77,7 @@ MappedVolume::MappedVolume(const char* _root_dir, MappingViews * _map, bool over
 	initChannels();
 }
 
-MappedVolume::MappedVolume(VirtualVolume *_vol, MappingViews * _map, bool overwrite_mdata, bool save_mdata)  throw (IOException)
+MappedVolume::MappedVolume(VirtualVolume *_vol, MappingViews * _map, bool overwrite_mdata, bool save_mdata)
 : VirtualVolume(_vol->getROOT_DIR()) // iannello ADDED
 {
     /**/iim::debug(iim::LEV3, strprintf("_root_dir=%s",_vol->getROOT_DIR()).c_str(), __iim__current__function__);
@@ -92,7 +92,7 @@ MappedVolume::MappedVolume(VirtualVolume *_vol, MappingViews * _map, bool overwr
 	initChannels();
 }
 
-MappedVolume::~MappedVolume(void) throw (iim::IOException)
+MappedVolume::~MappedVolume(void)
 {
     /**/iim::debug(iim::LEV3, 0, __iim__current__function__);
 
@@ -102,7 +102,7 @@ MappedVolume::~MappedVolume(void) throw (iim::IOException)
 }
 
 
-void MappedVolume::init() throw (IOException)
+void MappedVolume::init()
 {
     /**/iim::debug(iim::LEV3, 0, __iim__current__function__);
 
@@ -131,7 +131,7 @@ void MappedVolume::init() throw (IOException)
 }
 
 
-void MappedVolume::initChannels ( ) throw (IOException)
+void MappedVolume::initChannels ( )
 {
     /**/iim::debug(iim::LEV3, 0, __iim__current__function__);
 
@@ -240,7 +240,7 @@ void MappedVolume::extractCoordinates(Block* blk, int z, int* crd_1, int* crd_2,
 }
 
 //loads given subvolume in a 1-D array of float, (V0,H0,D0) and (V1,H1,D1) identify the transformed volume (target volume)
-real32* MappedVolume::loadSubvolume_to_real32(int V0,int V1, int H0, int H1, int D0, int D1) throw (IOException)
+real32* MappedVolume::loadSubvolume_to_real32(int V0,int V1, int H0, int H1, int D0, int D1)
 {
     /**/iim::debug(iim::LEV3, strprintf("V0=%d, V1=%d, H0=%d, H1=%d, D0=%d, D1=%d", V0, V1, H0, H1, D0, D1).c_str(), __iim__current__function__);
 
@@ -302,7 +302,7 @@ real32* MappedVolume::loadSubvolume_to_real32(int V0,int V1, int H0, int H1, int
 
 //loads given subvolume in a 1-D array of iim::uint8 while releasing stacks slices memory when they are no longer needed
 //---03 nov 2011: added color support
-iim::uint8* MappedVolume::loadSubvolume_to_UINT8(int V0,int V1, int H0, int H1, int D0, int D1, int *channels, int ret_type ) throw (IOException, iom::exception)
+iim::uint8* MappedVolume::loadSubvolume_to_UINT8(int V0,int V1, int H0, int H1, int D0, int D1, int *channels, int ret_type )
 {
     /**/iim::debug(iim::LEV3, strprintf("V0=%d, V1=%d, H0=%d, H1=%d, D0=%d, D1=%d, *channels=%d, ret_type=%d", V0, V1, H0, H1, D0, D1, channels ? *channels : -1, ret_type).c_str(), __iim__current__function__);
 
