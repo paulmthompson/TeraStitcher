@@ -128,10 +128,10 @@ class TeraStitcherCLI
 		~TeraStitcherCLI(void){};
 
 		//reads options and parameters from command line
-		void readParams(int argc, char** argv) throw (iom::exception);
+		void readParams(int argc, char** argv);
 
 		//checks parameters correctness
-		void checkParams() throw (iom::exception);
+		void checkParams();
 
 		//returns help text
 		string getHelpText();

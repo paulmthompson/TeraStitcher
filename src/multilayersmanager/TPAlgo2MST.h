@@ -64,7 +64,7 @@ class TPAlgo2MST : public TPAlgo2
 		*       ent is quite reliable, with a very little reliability gain.  This implies possible bad absolute  posi-
 		*       tions estimations when the path is too long.
 		**************************************************************************************************************/
-		int **execute() throw (iom::exception);
+		int **execute();
 };
 
 #endif /* _TILE_PLACEMENT_ALGORITHM_MINIMUM_SPANNING_TREE_2_H */

@@ -170,7 +170,7 @@ void Block::binarizeInto(FILE* file)
 	fwrite(&N_BYTESxCHAN, sizeof(uint32), 1, file);
 }
 
-void Block::unBinarizeFrom(FILE* file) throw (IOException)
+void Block::unBinarizeFrom(FILE* file)
 {
     /**/iim::debug(iim::LEV3, strprintf("ROW_INDEX=%d, COL_INDEX=%d", ROW_INDEX, COL_INDEX).c_str(), __iim__current__function__);
 

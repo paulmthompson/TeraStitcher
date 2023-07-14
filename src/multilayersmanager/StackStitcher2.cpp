@@ -117,7 +117,7 @@ void StackStitcher2::computeTileDisplacements(
 	bool no_overlap,
 	bool show_progress_bar
 ) 
-throw (IOException) 
+
 {
 	#if S_VERBOSE>2
 	printf("\t\t\t....in StackStitcher2::computeDisplacements(..., start_layer = %d, end_layer = %d, tile_idx_V = %d, tile_idx_H = %d, displ_max_V = %d, displ_max_H = %d, displ_max_D = %d)\n",
@@ -258,7 +258,7 @@ throw (IOException)
 * _D1:        third coordinate of the down/right/bottm corner
 **************************************************************************************************************/
 void StackStitcher2::computeVolumeDims(int _ROW_START, int _ROW_END, 
-									  int _COL_START, int _COL_END, int _D0, int _D1) throw (IOException)
+									  int _COL_START, int _COL_END, int _D0, int _D1)
 {
         #if S_VERBOSE >2
 	printf("\t\t\t....in StackStitcher2::computeVolumeDims(exclude_nonstitchable_stacks = %s, _ROW_START=%d, _ROW_END=%d, _COL_START=%d, _COL_END=%d, _D0=%d, _D1=%d)\n",
@@ -419,7 +419,7 @@ int StackStitcher2::getStripeABS_V(int row_index, bool up)
 * stored before it is combined into the final stripe.
 **************************************************************************************************************/
 iim::real32 *StackStitcher2::getStripe(short row_index, short d_index, int restore_direction, StackRestorer* stk_rst,
-								 int blending_algo)									        throw (IOException)
+								 int blending_algo)									      
 {
         #if S_VERBOSE >2
 	printf("........in StackStitcher::getStripe(short row_index=%d, short d_index=%d, restore_direction=%d, blending_algo=%d)\n",
@@ -609,7 +609,7 @@ iim::real32 *StackStitcher2::getStripe(short row_index, short d_index, int resto
 void StackStitcher2::mergeTiles(std::string output_path, int slice_height, int slice_width, bool* resolutions, 
 							   int _ROW_START, int _ROW_END, int _COL_START,
 							   int _COL_END, int _D0, int _D1, int blending_algo, int intralayer_blending_algo, bool test_mode, bool show_progress_bar, 
-							   const char* saved_img_format, int saved_img_depth)			throw (IOException)
+							   const char* saved_img_format, int saved_img_depth)	
 {
         #if S_VERBOSE > 2
         printf("......in StackStitcher::mergeTiles(output_path=\"%s\", slice_height=%d, slice_width=%d, exclude_nonstitchable_stacks = %s, "
@@ -1065,7 +1065,7 @@ void StackStitcher2::halveSample(iim::real32* img, int height, int width, int de
 * WARNING: this mathod has to be used if layers are already stitched blocks (i.e. their internal diplacements 
 * are not affected by interlayer displacements.
 **************************************************************************************************************/
-void StackStitcher2::projectDisplacements() throw (IOException)
+void StackStitcher2::projectDisplacements()
 {
 	for ( int k=0; k<(volume->getN_LAYERS() - 1); k++ ) { // for each pair of layers i, i+1
 		vector<Displacement *> temp_V(volume->getDISPS(k)->size());
@@ -1090,7 +1090,7 @@ void StackStitcher2::projectDisplacements() throw (IOException)
 * tiles.
 * ii and jj must be integer 1D arrays with N_LAYERS - 1 elements
 **************************************************************************************************************/
-void StackStitcher2::findBestDisplacements()  throw (iim::IOException) {
+void StackStitcher2::findBestDisplacements() {
 	for ( int k=0; k<(volume->getN_LAYERS() - 1); k++ ) { // for each pair of layers i, i+1
 		// initially tiles (0,0) of layers k and k+1 are assumed to have the better displacement
 		volume->setiBest(0,k);
@@ -1114,7 +1114,7 @@ void StackStitcher2::findBestDisplacements()  throw (iim::IOException) {
 * For each pair of layers compute and set the displacement of tile (0,0) coherent with the  best  displacement  
 * and set to 1.0 the reliability of displacement of tile (0,0).
 **************************************************************************************************************/
-void StackStitcher2::adjustBestDisplacements() throw (iim::IOException)
+void StackStitcher2::adjustBestDisplacements()
 {
 	for ( int layer=1; layer<(volume->getN_LAYERS()); layer++ ) {
 		// build a temporary descriptor
@@ -1155,7 +1155,7 @@ void StackStitcher2::adjustBestDisplacements() throw (iim::IOException)
 * Moreover, stacks which do not have any reliable single-direction displacements with all 4 neighbors are mar-
 * ked as NON STITCHABLE.
 **************************************************************************************************************/
-void StackStitcher2::thresholdDisplacements(float reliability_threshold) throw (IOException)
+void StackStitcher2::thresholdDisplacements(float reliability_threshold)
 {
 	#if S_VERBOSE > 3
 	printf("......in StackStitcher2::thresholdDisplacements(reliability_threshold = %.4f)\n", reliability_threshold);
@@ -1188,7 +1188,7 @@ void StackStitcher2::thresholdDisplacements(float reliability_threshold) throw (
 * whole 3D matrix of tiles.
 * Update the internal representation of each layer.
 **************************************************************************************************************/
-void StackStitcher2::computeTilesPlacement(int algorithm_type) throw (IOException)
+void StackStitcher2::computeTilesPlacement(int algorithm_type)
 {
 	#if S_VERBOSE > 3
 	printf("......in StackStitcher2::computeTilesPlacement(algorithm_type = %d)\n", algorithm_type);
@@ -1231,7 +1231,7 @@ void StackStitcher2::computeTilesPlacement(int algorithm_type) throw (IOExceptio
 * - 1 is H
 * - 2 is D
 **************************************************************************************************************/
-void StackStitcher2::computeLayersPlacement()								throw (IOException)
+void StackStitcher2::computeLayersPlacement()
 {
 	#if S_VERBOSE > 3
 	printf("......in StackStitcher2::computeTilesPlacement(algorithm_type = %d)\n", algorithm_type);

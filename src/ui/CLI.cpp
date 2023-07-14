@@ -71,7 +71,7 @@ TeraStitcherCLI::TeraStitcherCLI(void)
 }
 
 //reads options and parameters from command line
-void TeraStitcherCLI::readParams(int argc, char** argv) throw (iom::exception)
+void TeraStitcherCLI::readParams(int argc, char** argv)
 {
 	//command line object definition
 	TCLAP::CmdLine cmd(getHelpText(), '=', terastitcher::version + (ts::qtversion.empty() ? "" : " (with Qt " + ts::qtversion + ")"));
@@ -700,7 +700,7 @@ void TeraStitcherCLI::readParams(int argc, char** argv) throw (iom::exception)
 }
 
 //checks parameters correctness
-void TeraStitcherCLI::checkParams() throw (iom::exception)
+void TeraStitcherCLI::checkParams()
 {
 	//parameters check should be done here.
 	//We trust in current tool functions checks.

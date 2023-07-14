@@ -166,11 +166,11 @@ public:
 	vm::VirtualStack*** getSTACKS() {return 0;}
 
 	//XML methods
-	void			initFromXML(const char *xml_filename) throw (iim::IOException);
-	void			saveXML(const char *xml_filename=0, const char *xml_filepath=0) throw (iim::IOException);
-	void            saveLayersXML(const char *xml_filename=0, const char *xml_filepath=0) throw (iim::IOException);
+	void			initFromXML(const char *xml_filename);
+	void			saveXML(const char *xml_filename=0, const char *xml_filepath=0);
+	void            saveLayersXML(const char *xml_filename=0, const char *xml_filepath=0);
 
-	void insertDisplacement(int i, int j, int k, Displacement *displacement) throw (iim::IOException);
+	void insertDisplacement(int i, int j, int k, Displacement *displacement);
 
 	// needed to extract layer volumes
 	friend class TPAlgo2MST; 

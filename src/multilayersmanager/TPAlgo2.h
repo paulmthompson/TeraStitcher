@@ -47,7 +47,7 @@ class TPAlgo2
 		* Abstract method that all derived classes must implement.
 		* Finds the optimal tile placement on the <volume> object member
 		**************************************************************************************************************/
-		virtual int **execute()																   throw (iom::exception) = 0;
+		virtual int **execute() = 0;
 
 		//static method which is responsible to instance and return the algorithm of the given type
 		static TPAlgo2* instanceAlgorithm(int _type, MultiLayersVolume * _volume);											

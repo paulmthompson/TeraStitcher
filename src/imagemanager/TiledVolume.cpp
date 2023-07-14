@@ -118,7 +118,7 @@ TiledVolume::TiledVolume(const char* _root_dir)
 	}
 }
 
-TiledVolume::TiledVolume(const char* _root_dir, ref_sys _reference_system, float _VXL_1, float _VXL_2, float _VXL_3, bool overwrite_mdata, bool save_mdata)  throw (IOException)
+TiledVolume::TiledVolume(const char* _root_dir, ref_sys _reference_system, float _VXL_1, float _VXL_2, float _VXL_3, bool overwrite_mdata, bool save_mdata)
 : VirtualVolume(_root_dir) // iannello ADDED
 {
     /**/iim::debug(iim::LEV3, strprintf("_root_dir=%s, ref_sys reference_system={%d,%d,%d}, VXL_1=%.4f, VXL_2=%.4f, VXL_3=%.4f",

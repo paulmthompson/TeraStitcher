@@ -358,7 +358,7 @@ void UnstitchedVolume::init()
     /**/iim::debug(iim::LEV3, 0, __iim__current__function__);
 }
 
-void UnstitchedVolume::initChannels ( ) throw (IOException)
+void UnstitchedVolume::initChannels ( )
 {
     /**/iim::debug(iim::LEV3, 0, __iim__current__function__);
 }
@@ -409,7 +409,7 @@ void UnstitchedVolume::extractCoordinates(Block* blk, int z, int* crd_1, int* cr
 }
 
 //loads given subvolume in a 1-D array of float
-real32* UnstitchedVolume::internal_loadSubvolume_to_real32(int &VV0,int &VV1, int &HH0, int &HH1, int &DD0, int &DD1, int V0,int V1, int H0, int H1, int D0, int D1) throw (IOException)
+real32* UnstitchedVolume::internal_loadSubvolume_to_real32(int &VV0,int &VV1, int &HH0, int &HH1, int &DD0, int &DD1, int V0,int V1, int H0, int H1, int D0, int D1)
 {
     /**/iim::debug(iim::LEV3, strprintf("V0=%d, V1=%d, H0=%d, H1=%d, D0=%d, D1=%d", V0, V1, H0, H1, D0, D1).c_str(), __iim__current__function__);
 	

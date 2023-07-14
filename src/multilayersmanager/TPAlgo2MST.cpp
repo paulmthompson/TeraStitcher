@@ -73,7 +73,7 @@ TPAlgo2MST::TPAlgo2MST(MultiLayersVolume * _volume) : TPAlgo2(S_FATPM_SP_TREE, _
 *
 * After recomputing all displacements check if MultiLayerVolume size should be updated
 **************************************************************************************************************/
-int **TPAlgo2MST::execute() throw (iom::exception)
+int **TPAlgo2MST::execute()
 {
 	#if S_VERBOSE > 2
 	printf("....in TPAlgo2MST::execute()");

@@ -98,7 +98,7 @@ class StackStitcher
 		* stored before it is combined into the final stripe.
 		**************************************************************************************************************/
 		iom::real_t* getStripe(int row_index, int d_index, int restore_direction=-1, StackRestorer* stk_rst=NULL,
-						  int blending_algo=S_SINUSOIDAL_BLENDING)    							   throw (iom::exception);
+						  int blending_algo=S_SINUSOIDAL_BLENDING);
 
 		/*************************************************************************************************************
 		* Merges all slices of the given row at the given depth index, so obtaining the stripe that is returned.
@@ -107,7 +107,7 @@ class StackStitcher
 		* stored before it is combined into the final stripe.
 		**************************************************************************************************************/
 		iom::real_t* getStripe2(int row_index, int d_index, int _V0=-1, int _V1=-1, int _H0=-1, int _H1=-1, 
-							int restore_direction=-1, StackRestorer* stk_rst=NULL, int blending_algo=S_SINUSOIDAL_BLENDING) throw (iom::exception);
+							int restore_direction=-1, StackRestorer* stk_rst=NULL, int blending_algo=S_SINUSOIDAL_BLENDING);
 
 		/*************************************************************************************************************
 		* Returns the (up = true -> TOP, up = false -> BOTTOM) V coordinate of the virtual stripe at <row_index> row. 
@@ -206,8 +206,7 @@ class StackStitcher
 			int z1=-1,                                  // subdata selection along Z: [z0, z1] slices will be processed only
 			bool skip_V=false,                          // skip displacement computation for pairs in the last row
 			bool skip_H=false                           // skip displacement computation for pairs in the last column
-		)									            
-		throw (iom::exception);
+		);
 
 
 		/*************************************************************************************************************
@@ -216,7 +215,7 @@ class StackStitcher
                 * ment. Where for a pair of adjacent stacks no displacement is available,  a displacement  is generated using
                 * nominal stage coordinates.
 		**************************************************************************************************************/
-		void projectDisplacements()																  throw (iom::exception);
+		void projectDisplacements();
 
 		/*************************************************************************************************************
 		* Assuming that for each pair of adjacent stacks  exists one  and only one displacement,  this displacement is 
@@ -225,13 +224,13 @@ class StackStitcher
 		* Moreover, stacks which do not have any reliable single-direction displacements with all 4 neighbors are mar-
 		* ked as NON STITCHABLE.
 		**************************************************************************************************************/
-		void thresholdDisplacements(float reliability_threshold)								  throw (iom::exception);
+		void thresholdDisplacements(float reliability_threshold);
 
 
 		/*************************************************************************************************************
 		* Executes the compute tiles placement algorithm associated to the given ID <algorithm_type>
 		**************************************************************************************************************/
-		void computeTilesPlacement(int algorithm_type)											  throw (iom::exception);
+		void computeTilesPlacement(int algorithm_type);
 
 
         /*************************************************************************************************************
@@ -241,7 +240,7 @@ class StackStitcher
         * or columns with no stitchable stacks
         **************************************************************************************************************/
         void computeVolumeDims(bool exclude_nonstitchable_stacks = true, int _ROW_START = -1,	   int _ROW_END = -1,
-                                                    int _COL_START = -1, int _COL_END = -1, int _D0 = -1, int _D1 = -1) throw (iom::exception);
+                                                    int _COL_START = -1, int _COL_END = -1, int _D0 = -1, int _D1 = -1);
 
 		/*************************************************************************************************************
 		* Method to be called for tile merging. <> parameters are mandatory, while [] are optional.
@@ -273,7 +272,7 @@ class StackStitcher
 						bool exclude_nonstitchable_stacks =true, int _ROW_START=-1, int _ROW_END=-1, int _COL_START=-1,
 						int _COL_END=-1, int _D0=-1, int _D1=-1,	bool restoreSPIM=false,	  int restore_direction=-1,
 						int blending_algo=S_SINUSOIDAL_BLENDING, int method = HALVE_BY_MEAN, bool test_mode=false, bool show_progress_bar= true,
-						const char* saved_img_format=iom::DEF_IMG_FORMAT.c_str(), int saved_img_depth=iom::DEF_BPP) throw (iom::exception);
+						const char* saved_img_format=iom::DEF_IMG_FORMAT.c_str(), int saved_img_depth=iom::DEF_BPP) ;
 		
 
 		/*************************************************************************************************************
@@ -339,7 +338,7 @@ class StackStitcher
 								bool exclude_nonstitchable_stacks =true, int _ROW_START=-1, int _ROW_END=-1, int _COL_START=-1,
 								int _COL_END=-1, int _D0=-1, int _D1=-1,	bool restoreSPIM=false,	  int restore_direction=-1,
 								int blending_algo=S_SINUSOIDAL_BLENDING, int method = HALVE_BY_MEAN, bool isotropic=false, bool test_mode=false, bool show_progress_bar= true,
-								const char* saved_img_format=iom::DEF_IMG_FORMAT.c_str(), int saved_img_depth=iom::DEF_BPP, bool par_mode=false) throw (iom::exception);
+								const char* saved_img_format=iom::DEF_IMG_FORMAT.c_str(), int saved_img_depth=iom::DEF_BPP, bool par_mode=false);
 
 
 		/*************************************************************************************************************
@@ -351,7 +350,7 @@ class StackStitcher
 								bool exclude_nonstitchable_stacks =true, int _ROW_START=-1, int _ROW_END=-1, int _COL_START=-1,
 								int _COL_END=-1, int _D0=-1, int _D1=-1,	bool restoreSPIM=false,	  int restore_direction=-1,
 								int blending_algo=S_SINUSOIDAL_BLENDING, int method = HALVE_BY_MEAN, bool isotropic=false, bool test_mode=false, bool show_progress_bar= true,
-								const char* saved_img_format=iom::DEF_IMG_FORMAT.c_str(), int saved_img_depth=iom::DEF_BPP, bool par_mode=false) throw (iom::exception);
+								const char* saved_img_format=iom::DEF_IMG_FORMAT.c_str(), int saved_img_depth=iom::DEF_BPP, bool par_mode=false);
 
 		/*************************************************************************************************************
 		* Method to be called for creating the metadata file of the output volume starting from the importad unstitched
@@ -362,7 +361,7 @@ class StackStitcher
 								bool exclude_nonstitchable_stacks =true, int _ROW_START=-1, int _ROW_END=-1, int _COL_START=-1,
 								int _COL_END=-1, int _D0=-1, int _D1=-1,	bool restoreSPIM=false,	  int restore_direction=-1,
 								int blending_algo=S_SINUSOIDAL_BLENDING, int method = HALVE_BY_MEAN, bool isotropic=false, bool test_mode=false, bool show_progress_bar= true,
-								const char* saved_img_format=iom::DEF_IMG_FORMAT.c_str(), int saved_img_depth=iom::DEF_BPP, bool par_mode=false) throw (iom::exception);
+								const char* saved_img_format=iom::DEF_IMG_FORMAT.c_str(), int saved_img_depth=iom::DEF_BPP, bool par_mode=false);
 };
 
 #endif

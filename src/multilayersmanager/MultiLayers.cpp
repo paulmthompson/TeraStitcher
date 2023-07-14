@@ -304,7 +304,7 @@ iim::real32*	MultiLayersVolume::getSUBVOL(int i, int V0, int V1, int H0, int H1,
 }
 
 
-void MultiLayersVolume::initFromXML(const char *xml_filename) throw (IOException) {
+void MultiLayersVolume::initFromXML(const char *xml_filename) {
 	#if VM_VERBOSE > 3
     printf("\t\t\t\tin MultiLayersVolume::initFromXML(char *xml_filename = %s)\n", xml_filepath);
 	#endif
@@ -419,7 +419,7 @@ void MultiLayersVolume::initFromXML(const char *xml_filename) throw (IOException
 }
 
 
-void MultiLayersVolume::saveXML(const char *xml_filename, const char *xml_filepath) throw (IOException) {
+void MultiLayersVolume::saveXML(const char *xml_filename, const char *xml_filepath)  {
 	#if VM_VERBOSE > 3
 	printf("\t\t\t\tin MultiLayersVolume::saveXML(char *xml_filename = %s)\n", xml_filename);
 	#endif
@@ -548,7 +548,7 @@ void MultiLayersVolume::saveXML(const char *xml_filename, const char *xml_filepa
 }
 
 
-void MultiLayersVolume::saveLayersXML(const char *xml_filename, const char *xml_filepath) throw (IOException) {
+void MultiLayersVolume::saveLayersXML(const char *xml_filename, const char *xml_filepath) {
 	#if VM_VERBOSE > 3
 	printf("\t\t\t\tin MultiLayersVolume::saveLayersXML(char *xml_filename = %s)\n", xml_filename);
 	#endif
@@ -600,7 +600,7 @@ void MultiLayersVolume::initDISPS(int i, int _DIM_V, int _DIM_H) {
 }
 
 
-void MultiLayersVolume::insertDisplacement(int i, int j, int k, Displacement *displacement) throw (IOException) {
+void MultiLayersVolume::insertDisplacement(int i, int j, int k, Displacement *displacement) {
 
 	displacement->evalReliability(dir_vertical);
 	displacement->evalReliability(dir_horizontal);

@@ -76,7 +76,7 @@ private:
 	* selected by the [blending_algo] parameter. If a  <StackRestorer>  object has been passed,  each slice is re-
 	* stored before it is combined into the final stripe.
 	**************************************************************************************************************/
-	iim::real32 *getStripe(short row_index, short d_index, int restore_direction=-1, StackRestorer* stk_rst=NULL, int blending_algo=S_SINUSOIDAL_BLENDING) throw (iim::IOException);
+	iim::real32 *getStripe(short row_index, short d_index, int restore_direction=-1, StackRestorer* stk_rst=NULL, int blending_algo=S_SINUSOIDAL_BLENDING);
 
 	/*************************************************************************************************************
 	* Returns the (up = true -> TOP, up = false -> BOTTOM) V coordinate of the virtual stripe at <row_index> row. 
@@ -208,8 +208,8 @@ public:
 		bool no_overlap=true,                       // if true enable the management of non overlapping layers aligning 
 		                                            // the last and the first slice of upper and bottom layers, respectively
 		bool show_progress_bar=true
-	) 
-	throw (iim::IOException);
+	);
+
 
 
 
@@ -218,26 +218,26 @@ public:
 	* leaves one displacements that has to be applied to the layer as a whole. 
 	* WARNING: this mathod it has to be used if layers are already stitched 3D images.
 	**************************************************************************************************************/
-	void projectDisplacements()																  throw (iim::IOException);
+	void projectDisplacements();
 
 	/*************************************************************************************************************
 	* For each pair of layers projects finds the best interlayer displacement evaluating  all dimensions  together 
 	* and returns the position in the tile matrix of the corresponding pair of tiles.
 	**************************************************************************************************************/
-	void findBestDisplacements()															  throw (iim::IOException);
+	void findBestDisplacements();
 
 	/*************************************************************************************************************
 	* For each pair of layers compute  the  displacement  of  tile  (0,0)  coherent  with  the  best  displacement  
 	* and set to 1.0 the reliability of displacement of tile (0,0).
 	**************************************************************************************************************/
-	void adjustBestDisplacements()															  throw (iim::IOException);
+	void adjustBestDisplacements();
 
 	/*************************************************************************************************************
 	* Compute the tiles placement with a global optimization algorithm taking into account the alignment of the 
 	* whole 3D matrix of tiles.
 	* Update the internal representation of each layer.
 	**************************************************************************************************************/
-	void computeTilesPlacement(int algorithm_type)																  throw (iim::IOException);
+	void computeTilesPlacement(int algorithm_type);
 
 	/*************************************************************************************************************
 	* Assuming that for each pair of adjacent stacks  exists one  and only one displacement,  this displacement is 
@@ -246,13 +246,13 @@ public:
 	* Moreover, stacks which do not have any reliable single-direction displacements with all 4 neighbors are mar-
 	* ked as NON STITCHABLE.
 	**************************************************************************************************************/
-	void thresholdDisplacements(float reliability_threshold)								  throw (iim::IOException);
+	void thresholdDisplacements(float reliability_threshold);
 
 
 	/*************************************************************************************************************
 	* Executes the compute tiles placement algorithm associated to the given ID <algorithm_type>
 	**************************************************************************************************************/
-	void computeLayersPlacement()											  throw (iim::IOException);
+	void computeLayersPlacement();
 
 
     /*************************************************************************************************************
@@ -269,7 +269,7 @@ public:
 	* _D1:        third coordinate of the down/right/bottm corner
     **************************************************************************************************************/
     void computeVolumeDims(int _ROW_START = -1,	   int _ROW_END = -1,
-                           int _COL_START = -1, int _COL_END = -1, int _D0 = -1, int _D1 = -1) throw (iim::IOException);
+                           int _COL_START = -1, int _COL_END = -1, int _D0 = -1, int _D1 = -1);
 
 	/*************************************************************************************************************
 	* Method to be called for tile merging. <> parameters are mandatory, while [] are optional.
@@ -302,7 +302,7 @@ public:
 					int _ROW_START=-1, int _ROW_END=-1, int _COL_START=-1,
 					int _COL_END=-1, int _D0=-1, int _D1=-1, int blending_algo=S_SINUSOIDAL_BLENDING, int intralayer_blending_algo=S_SINUSOIDAL_BLENDING, 
 					bool test_mode=false, bool show_progress_bar= true, const char* saved_img_format=iom::DEF_IMG_FORMAT.c_str(), 
-					int saved_img_depth=iom::DEF_BPP) throw (iim::IOException);
+					int saved_img_depth=iom::DEF_BPP);
 		
 
 	/*************************************************************************************************************
@@ -367,7 +367,7 @@ public:
 							int _ROW_START=-1, int _ROW_END=-1, int _COL_START=-1,
 							int _COL_END=-1, int _D0=-1, int _D1=-1, int blending_algo=S_SINUSOIDAL_BLENDING, int intralayer_blending_algo=S_SINUSOIDAL_BLENDING, 
 							bool test_mode=false, bool show_progress_bar= true, const char* saved_img_format=iom::DEF_IMG_FORMAT.c_str(), 
-							int saved_img_depth=iom::DEF_BPP) throw (iim::IOException);
+							int saved_img_depth=iom::DEF_BPP);
 };
 
 #endif

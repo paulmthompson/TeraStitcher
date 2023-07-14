@@ -68,7 +68,7 @@ using namespace volumemanager;
 void StackStitcher2::mergeTilesVaa3DRaw(std::string output_path, int block_height, int block_width, int block_depth, bool* resolutions, 
 							   int _ROW_START, int _ROW_END, int _COL_START,
 							   int _COL_END, int _D0, int _D1, int blending_algo, int intralayer_blending_algo, bool test_mode, bool show_progress_bar, 
-							   const char* saved_img_format, int saved_img_depth)			throw (IOException)
+							   const char* saved_img_format, int saved_img_depth)		
 {
 	//FILE *tmp_file; // TEMP
 
