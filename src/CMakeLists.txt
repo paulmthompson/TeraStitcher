@@ -1,5 +1,15 @@
 # needed for Qt 5
-cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
+project( TeraStitcher )
+
+#[[
+Best practice for looking for cmake modules cmake folder in root of the project
+From Professional CMake Chapter 11 Modules
+]]
+list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_CURRENT_SOURCE_DIR}/../cmake)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # apple backwards compatibility
 option(MACOSX_BACKWARDS_COMPATIBILITY "MacOSX 10.11 backwords compatibility mode" OFF)
@@ -10,10 +20,14 @@ if(APPLE AND MACOSX_BACKWARDS_COMPATIBILITY)
 	message(STATUS ${MACOSX_DEPLOYMENT_TARGET})
 endif()
 
-project( TeraStitcher )
+#[[
+Manifest mode from VCPKG will make all dependancies specified in vcpkg.json be associated and installed
+with this particular project
+]]
+set(VCPKG_MANIFEST_MODE ON)
 
-# include cmake scripts
-set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../cmake)
+find_package(TIFF REQUIRED)
+
 include(Utils)
 include(Setup)
 include(Version)

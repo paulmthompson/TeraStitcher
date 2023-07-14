@@ -3,8 +3,6 @@
 # Make sure the compiler can find include files of other modules. 
 include_directories (${CMAKE_SOURCE_DIR}/3rdparty/zlib)
 include_directories (${CMAKE_BINARY_DIR}/3rdparty/zlib)
-include_directories (${CMAKE_SOURCE_DIR}/3rdparty/libtiff)
-include_directories (${CMAKE_BINARY_DIR}/3rdparty/libtiff) 
 include_directories (${TeraStitcher_SOURCE_DIR}/3rdparty/tinyxml)
 include_directories (${TeraStitcher_SOURCE_DIR}/imagemanager)
 include_directories (${TeraStitcher_SOURCE_DIR}/iomanager)
@@ -21,4 +19,8 @@ warnings_disable(CMAKE_CXX_FLAGS /wd4996) # vs2012: complains about unsafe stand
 file(GLOB stitcher_headers *.h)
 file(GLOB stitcher_sources *.cpp)
 add_library(stitcher STATIC ${stitcher_headers} ${stitcher_sources})
+
 set_target_properties(stitcher PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+target_include_directories(stitcher PRIVATE "$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/3rdparty/libtiff>"
+                                            "$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/3rdparty/libtiff>")
