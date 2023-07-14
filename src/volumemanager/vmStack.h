@@ -39,6 +39,9 @@
 #ifndef _VM_STACK_H_
 #define _VM_STACK_H_
 
+#include <set>
+#include <string>
+
 #include "volumemanager.config.h"
 #include "iomanager.config.h"
 #include "tinyxml.h"
