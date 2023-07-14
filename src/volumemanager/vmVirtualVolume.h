@@ -112,6 +112,9 @@ class volumemanager::VirtualVolume
 
 		VirtualVolume(const char* _stacks_dir, vm::ref_sys _reference_system, float VXL_1=0, float VXL_2=0, float VXL_3=0)
 		{
+			//PMT
+			//We are calling a virtual function from the constructor here, which isn't good practice
+			//https://www.artima.com/articles/never-call-virtual-functions-during-construction-or-destruction
 			init();
 
 			stacks_dir = new char[strlen(_stacks_dir)+1];

@@ -192,7 +192,7 @@ class vm::VirtualStack
 		virtual TiXmlElement* getXML()= 0;
 		virtual void loadXML(
 			TiXmlElement *stack_node,
-			int z_end);					// 2014-09-05. Alessandro. @ADDED 'z_end' parameter to support sparse data feature
+			int z_end) = 0;					// 2014-09-05. Alessandro. @ADDED 'z_end' parameter to support sparse data feature
 										//			   Here 'z_end' identifies the range [0, z_end) that slices can span
 		
 };
