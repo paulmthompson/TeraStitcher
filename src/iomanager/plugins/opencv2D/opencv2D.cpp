@@ -34,10 +34,10 @@
 * 2015-01-02. Giulio.     @IMPLEMENTED new plugins interface
 */
 
-#include <cxcore.h>
-#include <cv.h>
+//#include <cxcore.h>
+//#include <cv.h>
 #include <opencv2/opencv.hpp>
-#include <highgui.h>
+//#include <highgui.h>
 #include "opencv2D.h"
 
 // just call this macro to register your plugin
@@ -100,7 +100,6 @@ void
 	int & img_bytes_x_chan,			// (OUTPUT) number of bytes per channel
 	int & img_chans,				// (OUTPUT) number of channels
 	const std::string & params)		// (INPUT)  additional parameters <param1=val, param2=val, ...> 
-throw (iom::exception)
 {
 	/**/iom::debug(iom::LEV3, iom::strprintf("img_path = \"%s\", params = \"%s\"",img_path.c_str(), params.c_str()).c_str(), __iom__current__function__);
 
@@ -146,7 +145,6 @@ unsigned char *						// (OUTPUT) a buffer storing the 2D image
 	int & img_chans,				// (INPUT/OUTPUT) number of channels to be read
 	unsigned char *data,			// (INPUT) image data
 	const std::string & params)		// (INPUT) additional parameters <param1=val, param2=val, ...> 
-throw (iom::exception) 
 {
 	//throw iom::exception(iom::strprintf("not implemented yet"), __iom__current__function__);
 
@@ -265,7 +263,6 @@ void
 	int x0,							// (INPUT)	region of interest [x0,x1][y0,y1] to be set on the image
 	int x1,							// (INPUT)	region of interest [x0,x1][y0,y1] to be set on the image
 	const std::string & params)		// (INPUT) additional parameters <param1=val, param2=val, ...> 
-throw (iom::exception)
 {
 	//throw iom::exception(iom::strprintf("not implemented yet"), __iom__current__function__);
 
@@ -339,7 +336,6 @@ iom::real_t*						// (OUTPUT) a [0.0,1.0]-valued array storing the 3D image in c
 	bool is_sparse /*= false*/,		// (INPUT)	if true, 'files' is a sparse array and null entries should be treated as empty (black) images
 	iom::channel chan,				// (INPUT)	channel selection { ALL, R, G, B }. 
 	const std::string & params)		// (INPUT)	additional parameters <param1=val, param2=val, ...> 
-throw (iom::exception)
 {
 	throw iom::exception(iom::strprintf("not implemented yet"), __iom__current__function__);
 	
@@ -377,9 +373,9 @@ throw (iom::exception)
 		cv::Mat image;
 		double proctime = -TIME(0);
 		if(chan == iom::ALL)
-			image = cv::imread(image_path, CV_LOAD_IMAGE_GRAYSCALE | CV_LOAD_IMAGE_ANYDEPTH);   // pack all channels into grayscale
+			image = cv::imread(image_path, cv::IMREAD_GRAYSCALE | cv::IMREAD_ANYDEPTH);   // pack all channels into grayscale
 		else
-			image = cv::imread(image_path, CV_LOAD_IMAGE_ANYCOLOR);                             // load individual channels
+			image = cv::imread(image_path, cv::IMREAD_ANYCOLOR);                             // load individual channels
 		if(!image.data)
 			throw iom::exception(iom::strprintf("unable to open image \"%s\". Possible unsupported format or it isn't an image.\nSupported formats are BMP, DIB, JPEG, JPG, JPE, PNG, PBM, PGM, PPM, SR, RAS, TIFF, TIF", image_path.c_str()), __iom__current__function__);
 
@@ -465,7 +461,6 @@ void
 	int x1,						// (INPUT)	region of interest [x0,x1][y0,y1] to be set on the image
 	int bpp,					// (INPUT)	color depth (bits per pixel)
 	const std::string & params)	// (INPUT)	additional parameters <param1=val, param2=val, ...> 
-throw (iom::exception)
 {
 	throw iom::exception(iom::strprintf("not implemented yet"), __iom__current__function__);
 	
